@@ -21,6 +21,10 @@ duration:{
     type: Number,
     required: true
 },
+genre:{
+    type: String,
+    required: true
+},
 albumId:{
     type: mongoose.Schema.Types.ObjectId,
     ref:"Album",

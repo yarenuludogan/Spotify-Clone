@@ -8,29 +8,30 @@ import { usePlayerStore } from "@/stores/usePlayerStore";
 
 const HomePage = () => {
 	const {
-		fetchFeaturedSongs,
-		fetchMadeForYouSongs,
-		fetchTrendingSongs,
+		fetchSongs,
+		fetchAlbums,
 		isLoading,
-		madeForYouSongs,
-		featuredSongs,
-		trendingSongs,
+		songs,
+		albums,
 	} = useMusicStore();
 
 	const { initializeQueue } = usePlayerStore();
 
 	useEffect(() => {
-		fetchFeaturedSongs();
-		fetchMadeForYouSongs();
-		fetchTrendingSongs();
-	}, [fetchFeaturedSongs, fetchMadeForYouSongs, fetchTrendingSongs]);
+		fetchSongs();
+		fetchAlbums();
+	}, [fetchSongs, fetchAlbums]);
 
 	useEffect(() => {
-		if (madeForYouSongs.length > 0 && featuredSongs.length > 0 && trendingSongs.length > 0) {
-			const allSongs = [...featuredSongs, ...madeForYouSongs, ...trendingSongs];
-			initializeQueue(allSongs);
+		if (songs.length > 0) {
+			initializeQueue(songs);
 		}
-	}, [initializeQueue, madeForYouSongs, trendingSongs, featuredSongs]);
+	}, [initializeQueue, songs]);
+
+	// Şarkıları farklı kategorilere böl
+	const featuredSongs = songs.slice(0, 6);
+	const madeForYouSongs = songs.slice(6, 10);
+	const trendingSongs = songs.slice(10, 14);
 
 	return (
 		<main className='rounded-md overflow-hidden h-full bg-gradient-to-b from-zinc-800 to-zinc-900'>

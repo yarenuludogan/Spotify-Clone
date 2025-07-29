@@ -19,6 +19,10 @@ import mongoose from "mongoose";
             type: Number,
             required: true
         },
+        genre: {
+            type: String,
+            required: true
+        },
         songs:[{
             type: mongoose.Schema.Types.ObjectId, ref:"Song"
         }],
