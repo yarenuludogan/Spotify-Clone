@@ -17,8 +17,8 @@ const Topbar = () => {
     '
 		>
 			<div className='flex gap-2 items-center'>
-				<img src='/spotify.png' className='size-8' alt='Spotify logo' />
-				Spotify
+				<img src='/logos/indir.png' className='size-8' alt='Spotify logo' />
+				<span className='font-bold text-xl'>Spotify</span>
 			</div>
 			<div className='flex items-center gap-4'>
 				{isAdmin && (

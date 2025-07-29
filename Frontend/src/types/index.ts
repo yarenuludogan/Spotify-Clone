@@ -6,7 +6,6 @@ export interface Song {
 	imageUrl: string;
 	audioUrl: string;
 	duration: number;
-	genre: string;
 	createdAt: string;
 	updatedAt: string;
 }
@@ -17,8 +16,7 @@ export interface Album {
 	artist: string;
 	imageUrl: string;
 	releaseYear: number;
-	genre: string;
-	songs: string[];
+	songs: Song[];
 }
 
 export interface Stats {

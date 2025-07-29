@@ -139,21 +139,17 @@ const seedSongs = async () => {
 		await mongoose.connect(process.env.MONGODB_URI);
 
 		await Song.deleteMany({});
-
-		// Tüm albümleri çek
 		const albums = await Album.find({});
 
-		// Şarkıların her birine uygun albumId ekle
 		const songsWithAlbumId = songs.map((song) => {
-			// imageUrl üzerinden albümü bul
-			const album = albums.find((a) => a.imageUrl.replace('/cover-images/', '') === song.imageUrl.replace('/cover-images/', ''));
+
+			const album = albums.find((a) => a.imageUrl.replace('/albums/', '') === song.imageUrl.replace('/cover-images/', ''));
 			return {
 				...song,
 				albumId: album ? album._id : null,
 			};
 		});
 
-		// albumId olmayan şarkıları filtrele (eşleşmeyenler eklenmesin)
 		const validSongs = songsWithAlbumId.filter((song) => song.albumId);
 
 		await Song.insertMany(validSongs);

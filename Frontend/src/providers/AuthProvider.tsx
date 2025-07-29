@@ -23,7 +23,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 				updateApiToken(token);
 				if (token) {
 					await checkAdminStatus();
-					// init socket
+		
 					if (userId) initSocket(userId);
 				}
 			} catch (error: any) {
@@ -36,7 +36,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
 		initAuth();
 
-		// clean up
 		return () => disconnectSocket();
 	}, [getToken, userId, checkAdminStatus, initSocket, disconnectSocket]);
 
