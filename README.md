@@ -64,14 +64,6 @@ Spotify Clone/
 └── README.md
 ```
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js (v18 or higher)
-- MongoDB Atlas account
-- Clerk account for authentication
-- Cloudinary account for file storage
-
 ## 🎯 Key Features Implementation
 
 ### Authentication System
